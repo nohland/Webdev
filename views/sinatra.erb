@@ -1,0 +1,19 @@
+<h2>
+My Todo	List
+</h2>
+<% @lines.each do |line| %>
+<% task, date = line.split("-")%>
+<p>
+<li>
+  <%=task%> - <%=date%>
+</li>
+</p>
+<%end%>
+
+<form action = '/list' method='post'>
+      <strong>New Item:</strong>
+      <input type = 'text' name='task' placeholder='task content'/>
+       <input type = 'text' name='date' placeholder='due date'/>
+        <input type = 'submit' value='Enter'>
+</form>
+<p>    

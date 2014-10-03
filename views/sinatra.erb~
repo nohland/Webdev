@@ -1,0 +1,10 @@
+
+<% @lines.each do |line| %>
+<% task, date = line.split("-")%>
+<p>
+<li>
+  <%=task%>
+  <%=date%>
+</li>
+</p>
+<%end%>
