@@ -16,7 +16,7 @@ puts" #{task}: #{date}"
 end
 
 
-get '/list' do
+get '/' do
 file = File.read('list.txt')
 @lines = file.split("\n")
 erb :sinatra
@@ -27,5 +27,5 @@ post '/list' do
 File.open("list.txt","a") do |file|
 file.puts "#{params[:task]} - #{params[:date]}"
 end
-redirect '/list'
+redirect '/'
 end
