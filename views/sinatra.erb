@@ -1,10 +1,11 @@
-<h2>
-My Todo	List
-</h2>
+<!DOCTYPE html>
+<html lang="en">
+<h2>My Todo List</h2>
+
 <% @lines.each do |line| %>
 <% task, date = line.split("-")%>
 <p>
-<li>
+<liclass= "list">
   <%=task%> - <%=date%>
 </li>
 </p>
@@ -16,4 +17,5 @@ My Todo	List
        <input type = 'text' name='date' placeholder='due date'/>
         <input type = 'submit' value='Enter'>
 </form>
-<p>    
+
+</html>

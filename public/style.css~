@@ -1,0 +1,10 @@
+h2{
+text-decoration: underline;
+color: red;
+}
+body{
+text-align: left;
+}
+.list{
+color: red;
+}
