@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 <h2>My Todo List</h2>
-
+some edit
 <% @lines.each do |line| %>
 <% task, date = line.split("-")%>
 <p>
-<liclass= "list">
+<liclass="list">
   <%=task%> - <%=date%>
 </li>
 </p>
