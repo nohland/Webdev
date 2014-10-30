@@ -1,14 +1,13 @@
 <h2>My Todo List</h2>
-some edit
-<% @lines.each do |line| %>
-<% task, date = line.split("-")%>
+
+<% @items.each do |item| %>
 <p>
-<liclass="list">
-  <%=task%> - <%=date%>
+<li>
+<%=item.description%> - <%=item.due_date%>
 </li>
 </p>
-<%end%>
 
+<%end%>
 <form action = '/list' method='post'>
       <strong>New Item:</strong>
       <input type = 'text' name='task' placeholder='task content'/>

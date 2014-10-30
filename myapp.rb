@@ -2,30 +2,24 @@
  require 'rubygems'
  require 'bundler/setup'
  Bundler.require
-
-
-file_contents = File.read('list.txt')
-
-lines= file_contents.split("\n")
-
-lines.each do |line|
-
-task, date = line.split("-")
-puts" #{task}: #{date}"
-
-end
-
+require './models/TodoItem'
+ActiveRecord::Base.establish_connection(
+	:adapter  => 'sqlite3',
+  	:database => 'db/development.db',
+  	:encoding => 'utf8'
+)
 
 get '/' do
-file = File.read('list.txt')
-@lines = file.split("\n")
+@items = TodoItem.all
 erb :sinatra
 end
 
 
 post '/list' do
-File.open("list.txt","a") do |file|
-file.puts "#{params[:task]} - #{params[:date]}"
-end
+
+TodoItem.create(description: params[:task], due_date: params[:date])
+
+
+
 redirect '/'
 end
