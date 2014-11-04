@@ -1,6 +1,8 @@
 <h2>My Todo List</h2>
 
-<% @items.each do |item| %>
+
+
+<% @items.order(:due_date).each do |item| %>
 <p>
 <li>
 <%=item.description%> - <%=item.due_date%>
