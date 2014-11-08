@@ -4,10 +4,15 @@
 
 <% @items.order(:due_date).each do |item| %>
 <p>
+<<<<<<< HEAD
 <li>
 
 <%=item.description%> - <%=item.due_date%> 
 
+=======
+<li class="list">
+  <%=task%> - <%=date%>
+>>>>>>> cdf0324ca9de49e69924293ce80ae21c58388e80
 </li>
   <form action = '/delete/<%=item.id%>' method='post'> 
 

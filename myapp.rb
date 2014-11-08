@@ -14,6 +14,7 @@ else
 )
 end
 
+
 get '/' do
 @items = TodoItem.all
 erb :sinatra
