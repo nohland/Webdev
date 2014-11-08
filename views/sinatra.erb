@@ -5,8 +5,20 @@
 <% @items.order(:due_date).each do |item| %>
 <p>
 <li>
-<%=item.description%> - <%=item.due_date%>
+
+<%=item.description%> - <%=item.due_date%> 
+
 </li>
+  <form action = '/delete/<%=item.id%>' method='post'> 
+
+     <input type = 'submit' value='Delete' >
+
+  </form> 
+
+
+
+
+
 </p>
 
 <%end%>
@@ -16,5 +28,14 @@
        <input type = 'text' name='date' placeholder='due date'/>
         <input type = 'submit' value='Enter'>
 </form>
+
+
+<form action = '/deletes' method='post'>
+      <strong>Delete:</strong>
+      <input type = 'text' name='task' placeholder='task content'/>
+      <input type = 'submit' value='Delete' >
+</form>
+
+
 
 </html>

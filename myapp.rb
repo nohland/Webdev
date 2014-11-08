@@ -19,8 +19,24 @@ get '/' do
 erb :sinatra
 end
 
+post '/delete/:id' do
+
+TodoItem.find(params[:id]).destroy
+
+redirect '/'
+end
+
 
 post '/list' do
 TodoItem.create(description: params[:task], due_date: params[:date])
 redirect '/'
 end
+
+post '/deletes' do
+
+
+TodoItem.find_by(description: params[:task]).destroy
+
+redirect '/'
+end
+
