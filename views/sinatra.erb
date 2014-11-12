@@ -1,18 +1,15 @@
 <h2>My Todo List</h2>
 
-
+To go back to the users menu click <a href="/">here</a>
 
 <% @items.order(:due_date).each do |item| %>
 <p>
-<<<<<<< HEAD
+
 <li>
 
 <%=item.description%> - <%=item.due_date%> 
 
-=======
-<li class="list">
-  <%=task%> - <%=date%>
->>>>>>> cdf0324ca9de49e69924293ce80ae21c58388e80
+
 </li>
   <form action = '/delete/<%=item.id%>' method='post'> 
 
@@ -27,7 +24,9 @@
 </p>
 
 <%end%>
-<form action = '/list' method='post'>
+
+
+<form action = '/<%=@user.id%>/new_item' method='post'>
       <strong>New Item:</strong>
       <input type = 'text' name='task' placeholder='task content'/>
        <input type = 'text' name='date' placeholder='due date'/>
@@ -35,11 +34,6 @@
 </form>
 
 
-<form action = '/deletes' method='post'>
-      <strong>Delete:</strong>
-      <input type = 'text' name='task' placeholder='task content'/>
-      <input type = 'submit' value='Delete' >
-</form>
 
 
 

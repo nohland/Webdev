@@ -2,6 +2,7 @@
  require 'rubygems'
  require 'bundler/setup'
  Bundler.require
+ require './models/User'
  require './models/TodoItem'
 
 if ENV['DATABASE_URL']
@@ -15,29 +16,48 @@ else
 end
 
 
-get '/' do
-@items = TodoItem.all
+get '/:user' do
+@user= User.find(params[:user])
+@items = @user.todo_items.order(:due_date)
 erb :sinatra
+end
+
+
+
+
+post '/:user/new_item' do
+User.find(params[:user]).todo_items.create(description: params[:task], due_date: params[:date])
+redirect "/#{params[:user]}"
 end
 
 post '/delete/:id' do
 
-TodoItem.find(params[:id]).destroy
+@todo_items = TodoItem.find(params[:id])
+@user = @todo_items.user
+@todo_items.destroy
+redirect "/#{@user.id}"
 
-redirect '/'
 end
 
 
-post '/list' do
-TodoItem.create(description: params[:task], due_date: params[:date])
+
+
+
+post '/create_user' do
+@user=User.create(params)
 redirect '/'
+
 end
 
-post '/deletes' do
+post '/delete_user/:id' do
 
+User.find(params[:id]).destroy
+redirect "/#{params[:user]}"
 
-TodoItem.find_by(description: params[:task]).destroy
-
-redirect '/'
 end
 
+get '/' do
+@users = User.all.order(:name)
+erb :users
+
+end

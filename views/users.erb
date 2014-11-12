@@ -1,0 +1,34 @@
+<h3>Users</h3>
+
+<% @users.each do |user| %>
+<p>
+
+<li>
+
+<a href='/ <%=user.id%>'> <%=user.name%></a>
+
+
+</li>
+  <form action = '/delete_user/<%=user.id%>' method='post'>
+
+     <input type = 'submit' value='Delete User' >
+
+  </form>
+
+
+
+
+
+</p>
+
+<%end%>
+
+
+<h3>Add New User</h3>
+
+  <form action = '/create_user' method='post'>
+
+  <input type = 'text' name='name' placeholder='Add User'>	
+     <input type = 'submit' value='Create' >
+
+  </form>
